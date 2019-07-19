@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Clock Master</string>
+    <string name="alarm">Alarm</string>
 </resources>
