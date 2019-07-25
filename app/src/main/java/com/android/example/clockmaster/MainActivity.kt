@@ -3,18 +3,18 @@ package com.android.example.clockmaster
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
-import com.android.example.clockmaster.databinding.ActivityMainBinding
+import android.widget.Button
+
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-
+    private lateinit var buttonAlarm: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.buttonAlarm.setOnClickListener {  startAlarmActivity() }
+
+        buttonAlarm = findViewById(R.id.button_alarm)
+        buttonAlarm.setOnClickListener {  startAlarmActivity() }
     }
 
     private fun startAlarmActivity(){
