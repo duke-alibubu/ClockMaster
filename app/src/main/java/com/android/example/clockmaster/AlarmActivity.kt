@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import java.util.*
 
 
 class AlarmActivity : AppCompatActivity() , AdapterView.OnItemSelectedListener{
@@ -14,6 +15,7 @@ class AlarmActivity : AppCompatActivity() , AdapterView.OnItemSelectedListener{
     private var isAlarmSet: Boolean = false
     private lateinit var hourValue: String
     private lateinit var minuteValue: String
+    private lateinit var calendar: Calendar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +24,8 @@ class AlarmActivity : AppCompatActivity() , AdapterView.OnItemSelectedListener{
         hoursSpinner = findViewById(R.id.hours_spinner)
         minutesSpinner = findViewById(R.id.minutes_spinner)
         setButton = findViewById(R.id.set_button)
+        calendar = Calendar.getInstance()
+
 
 
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -39,6 +43,15 @@ class AlarmActivity : AppCompatActivity() , AdapterView.OnItemSelectedListener{
         minutesSpinner.onItemSelectedListener = this
 
         setButton.setOnClickListener { setAlarm() }
+
+        Toast.makeText(this,calendar.time.hours.toString(),Toast.LENGTH_SHORT).show()
+
+        // later move this part to another section
+        while (true){
+            if (isAlarmSet&&isTimeSet()){
+                Toast.makeText(this,"Alarm Ring!!!!!",Toast.LENGTH_SHORT).show()
+            }
+        }
 
     }
 
@@ -66,5 +79,9 @@ class AlarmActivity : AppCompatActivity() , AdapterView.OnItemSelectedListener{
             setButton.setText(R.string.set)
             isAlarmSet = false
         }
+    }
+
+    private fun isTimeSet() : Boolean {
+        return false
     }
 }
